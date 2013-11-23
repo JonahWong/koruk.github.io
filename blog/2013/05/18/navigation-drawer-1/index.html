@@ -1,0 +1,197 @@
+<h2>Navigation Drawer  &ndash; 第一部分</h2>
+
+<p>这篇文章是我在Google I/O 2013大会期间写的。会上<code>Google</code>发布了很多新的东西，其中之一就是第13次修订的<code>v4 support library</code>（v4表示最低支持<code>Api Level</code> 4，同理v13表示最低支持<code>Api Level</code>13）。这个版本的v4包对<code>Navigation Drawer</code>界面设计模式提供了官方支持。这种这种设计模式在过去的时间里迅速发展，被许多应用采纳。但在此之前都没有官方支持以及相应的规范。但此刻这种情况不存在了，官方推出了<a href="http://developer.android.com/design/patterns/navigation-drawer.html">官方设计指南</a>。</p>
+
+<p>在最近的关于Android的<a href="http://blog.stylingandroid.com/archives/1679"><code>Adapter</code></a><code>系列文章中，我们用Spinner导航的方式创建了一个应用，今天这篇文章中，我们会将那个Spinner导航来用</code>Navigation Drawer`来实现。</p>
+
+<p>首先我们需要做的是获取最新的v4兼容包（13次修订版），本文中的项目是<code>maven</code>项目，所以如果你不打算用<code>maven</code>的话，你需要删除已经通过<code>maven</code>方式导入的包，然后重新导入。</p>
+
+<p>然后我们就可以修改之前的布局文件，大致就是将其包含在<code>DrawerLayout</code>（v4包新增的布局）中，接着添加一个<code>ListView</code>用来显示导航列表。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> &lt;android.support.v4.widget.DrawerLayout
+</span><span class='line'>    xmlns:android="http://schemas.android.com/apk/res/android"
+</span><span class='line'>    xmlns:tools="http://schemas.android.com/tools"
+</span><span class='line'>    android:id="@+id/drawer_layout"
+</span><span class='line'>    android:layout_width="match_parent"
+</span><span class='line'>    android:layout_height="match_parent"
+</span><span class='line'>    tools:context=".MainActivity" &gt;
+</span><span class='line'> 
+</span><span class='line'>    &lt;FrameLayout
+</span><span class='line'>        android:id="@+id/main"
+</span><span class='line'>        android:layout_width="match_parent"
+</span><span class='line'>        android:layout_height="match_parent" &gt;
+</span><span class='line'>    &lt;/FrameLayout&gt;
+</span><span class='line'> 
+</span><span class='line'>    &lt;ListView
+</span><span class='line'>        android:id="@+id/drawer"
+</span><span class='line'>        android:layout_width="240dp"
+</span><span class='line'>        android:layout_height="match_parent"
+</span><span class='line'>        android:layout_gravity="start"
+</span><span class='line'>        android:background="#FFF"
+</span><span class='line'>        android:choiceMode="singleChoice" /&gt;
+</span><span class='line'> 
+</span><span class='line'>&lt;/android.support.v4.widget.DrawerLayout&gt;      </span></code></pre></td></tr></table></div></figure>
+
+
+<p>      <br/>
+接下来我们需要改变<code>MainActivity</code>中的代码来把<code>Adapter</code>给到<code>ListView</code>，之前我们是把<code>Adapter</code>给到<code>Spinner</code>的。代码如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>@Override
+</span><span class='line'>protected void onCreate(Bundle savedInstanceState)
+</span><span class='line'>{
+</span><span class='line'>    super.onCreate(savedInstanceState);
+</span><span class='line'>    setContentView(R.layout.activity_main);
+</span><span class='line'>    final String[] names = 
+</span><span class='line'>        getResources().getStringArray(R.array.nav_names);
+</span><span class='line'>    final String[] classes = 
+</span><span class='line'>        getResources().getStringArray(R.array.nav_classes);
+</span><span class='line'>    ArrayAdapter&lt;String&gt; adapter = 
+</span><span class='line'>        new ArrayAdapter&lt;String&gt;(
+</span><span class='line'>            getActionBar().getThemedContext(), 
+</span><span class='line'>            android.R.layout.simple_list_item_1, names);
+</span><span class='line'> 
+</span><span class='line'>    final DrawerLayout drawer = 
+</span><span class='line'>        (DrawerLayout)findViewById(R.id.drawer_layout);
+</span><span class='line'>    final ListView navList = 
+</span><span class='line'>        (ListView) findViewById(R.id.drawer);
+</span><span class='line'>    navList.setAdapter(adapter);
+</span><span class='line'>    navList.setOnItemClickListener(new OnItemClickListener()
+</span><span class='line'>    {
+</span><span class='line'> 
+</span><span class='line'>        @Override
+</span><span class='line'>        public void onItemClick(AdapterView&lt;?&gt; parent, 
+</span><span class='line'>                View view, final int pos, long id)
+</span><span class='line'>        {
+</span><span class='line'>            drawer.setDrawerListener( 
+</span><span class='line'>                new DrawerLayout.SimpleDrawerListener()
+</span><span class='line'>            {
+</span><span class='line'>                @Override
+</span><span class='line'>                public void onDrawerClosed(View drawerView)
+</span><span class='line'>                {
+</span><span class='line'>                    super.onDrawerClosed(drawerView);
+</span><span class='line'>                    FragmentTransaction tx = 
+</span><span class='line'>                        getSupportFragmentManager()
+</span><span class='line'>                            .beginTransaction();
+</span><span class='line'>                    tx.replace(R.id.main, 
+</span><span class='line'>                        Fragment.instantiate(
+</span><span class='line'>                            MainActivity.this, 
+</span><span class='line'>                            classes[pos]));
+</span><span class='line'>                    tx.commit();
+</span><span class='line'>                }
+</span><span class='line'>            });
+</span><span class='line'>            drawer.closeDrawer(navList);
+</span><span class='line'>        }
+</span><span class='line'>    });
+</span><span class='line'> 
+</span><span class='line'>    FragmentTransaction tx = 
+</span><span class='line'>        getSupportFragmentManager().beginTransaction();
+</span><span class='line'>    tx.replace(R.id.main,
+</span><span class='line'>        Fragment.instantiate(MainActivity.this, classes[0]));
+</span><span class='line'>    tx.commit();
+</span><span class='line'>    }   
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>下面我们来分析一下上面的代码： <br/>
+首先，我们需要一个不同的布局文件，因为<code>ListView</code>中的布局和之前<code>Spinner</code>中的不尽相同。接下来通过<code>findViewById</code>方法分别找到<code>DrawerLayout</code>和<code>ListView</code>，然后为<code>ListView</code>设置适配器。</p>
+
+<hr />
+
+<p>然后就需要处理一下<code>ListView</code>的点击事件——当<code>ListView</code>中某项被点击的时候，我们先关闭<code>drawer</code>，关闭完成后，我们再将<code>Fragment</code>呈现出来。</p>
+
+<hr />
+
+<p>我们之所以先把<code>drawer</code>关闭然后再加载<code>Fragment</code>是因为如果关闭<code>drawer</code>和加载<code>Fragment</code>同时进行的话，可能会有卡顿现象出现。当然，你也可以选择先加载<code>Fragment</code>然后再关闭<code>drawer</code>，但在本例中为了简单起见，我们选择先关闭<code>drawer</code>。</p>
+
+<hr />
+
+<p>最后，我们还需要设置默认的<code>Fragment</code>。之前我们用<code>Spinner</code>的时候，<code>Spinner</code>的默认选项使得我们可以通过<code>OnNavigationListener</code>来创建相应的<code>Fragment</code>。同样的，当我们用今天这个新的导航方式的时候，我们也必须手动设置一个默认的<code>Fragment</code>显示。</p>
+
+<hr />
+
+<p>完成上面这些操作，就可以得到一个简单的<code>Navigation Drawer</code>了。当我们从屏幕左侧边缘滑动的时候，侧面导航栏就会出现。</p>
+
+<p><img src="http://blog.stylingandroid.com/wp-content/uploads/2013/05/simple.png" alt="Navigation Drawer" /></p>
+
+<p>下一篇文章中，我们会讲一下<code>Navigation Drawer</code>如何与<code>ActionBar</code>整合起来，通过<code>ActionBar</code>来控制<code>Navigation Drawer</code>的显示和隐藏之间的切换。<br/>
+本文中用到源码可以到<a href="https://bitbucket.org/StylingAndroid/adapters/src/03263bae4437e5e26c5d433bbfacb3ffd429a1cd/?at=NavigationDrawerPart1">这里</a>下载。</p>
+
+<hr />
+
+<p><a href="http://blog.stylingandroid.com/archives/1793">原文链接</a></p>
