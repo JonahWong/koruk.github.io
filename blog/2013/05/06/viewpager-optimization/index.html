@@ -113,7 +113,7 @@
 
 <hr />
 
-<blockquote><p>KorukH：回复@王中晟edison:我不敢说听明白了… “只在有requestLayout()的Animation的那个页面将缓存变低”这句什么意思？idle状态的时候ViewPager就停止滚动了吧，还是说有动画的那个页面不可见时将缓存调高，可见时调低？</p>
+<blockquote><p>KorukH：回复@王中晟edison:我不敢说听明白了… “只在有requestLayout()的Animation的那个页面将缓存变低”这句什么意思？idle状态的时候ViewPager就停止滚动了吧，还是说有动画的那个页面不可见时将缓存调高，可见时调低？<!--more--></p>
 
 <blockquote><p>王中晟edison：回复@KorukH: 假设这么个情形：你有4个Tabs, Tab#4有用requestLayout的动画。如果你把setOffScreenPageLimit(4)的话，4个Tabs之间的移动会非常圆滑。但是Tab #4上面的动画会很慢。如果你把setOffScreenPageLimit(1)得话，4个页面之间的移动会很卡，但是Tab#4上面的就很顺畅了。</p>
 
