@@ -4,7 +4,7 @@
   <title><![CDATA[Koruk’s road of mobile development]]></title>
   <link href="http://koruk.github.io/atom.xml" rel="self"/>
   <link href="http://koruk.github.io/"/>
-  <updated>2013-11-24T03:56:53+08:00</updated>
+  <updated>2013-11-24T04:05:04+08:00</updated>
   <id>http://koruk.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[My First Octopress Blog Post]]></title>
-    <link href="http://koruk.github.io/blog/2013/11/24/my-first-octopress-blog-post/"/>
-    <updated>2013-11-24T02:16:11+08:00</updated>
-    <id>http://koruk.github.io/blog/2013/11/24/my-first-octopress-blog-post</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Android新增的导航模式-Navigation Drawer]]></title>
