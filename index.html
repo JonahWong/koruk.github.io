@@ -9,7 +9,7 @@
   <meta name="author" content="Koruk W. Hwang">
 
   
-  <meta name="description" content="Navigation Drawer &ndash; 第一部分 这篇文章是我在Google I/O 2013大会期间写的。会上Google发布了很多新的东西，其中之一就是第13次修订的v4 support library（v4表示最低支持Api Level 4，同理v13表示最低支持Api &hellip;">
+  <meta name="description" content="Android 中应用启动的时候，首先会加载一个预览窗口（由Activity 的主题决定的）用于对用户操作的即时响应。一旦真正的内容加载完毕，预览窗口将淡出，内容窗口相应淡入。 比如如果你的Activity 没有ActionBar，那就在Activity 的主题里面禁用掉ActionBar， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/15/how-to-make-app-launch-experience-smoother/">译：如何让Android 应用启动的体验更顺畅</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-15T16:56:27+08:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>Android 中应用启动的时候，首先会加载一个预览窗口（由Activity 的主题决定的）用于对用户操作的即时响应。一旦真正的内容加载完毕，预览窗口将淡出，内容窗口相应淡入。</p></blockquote>
+
+<p>比如如果你的Activity 没有ActionBar，那就在Activity 的主题里面禁用掉ActionBar，这样在预览窗口中就不会出现ActionBar了。</p>
+
+<p>另外，因为默认的预览窗口是纯黑色的，如果你的Activity 背景是其他颜色，那么为了启动连贯顺畅，可以通过覆写window的背景颜色实现。如下:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;style name="AppBaseTheme" parent="android:Theme.Holo.NoActionBar"&gt;
+</span><span class='line'>    &lt;item name="android:windowBackground"&gt;@color/red&lt;/item&gt;
+</span><span class='line'>&lt;/style&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果需要有ActionBar，则可以通过调整ActionBar的显示选项（displayOptions）比如显示和隐藏标题或者logo，来实现更顺滑的应用启动效果。 参考该<a href="http://goo.gl/G8lJgj">文档</a>和<a href="http://goo.gl/sSbXNf">API指南</a></p>
+
+<p>注意，不要使用这个功能去实现Splash屏幕，这个的目的是为用户提供更流畅的应用体验，提供更和谐的转场效果。</p>
+
+<p>更多信息，查看Cyril Mottier的<a href="http://goo.gl/PR4hCr">这篇文章</a></p>
+
+<p><img src="https://lh6.googleusercontent.com/-3Pspka2CHF8/Uv5iXkM9lkI/AAAAAAAAEjI/NGpj6cNwYAQ/w506-h512/smoothlaunch.gif" alt="image" /></p>
+
+<p><a href="https://plus.google.com/+AndroidDevelopers/posts/VVpjo7KDx4H">原文链接</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -467,6 +525,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/15/how-to-make-app-launch-experience-smoother/">译：如何让Android 应用启动的体验更顺畅</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/05/18/navigation-drawer-1/">Android新增的导航模式-Navigation Drawer</a>
       </li>
     
@@ -495,7 +557,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Koruk W. Hwang -
+  Copyright &copy; 2014 - Koruk W. Hwang -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
