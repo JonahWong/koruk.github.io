@@ -36,22 +36,25 @@
   <meta name="Generator" content="Cocoa HTML Writer">
   <meta name="CocoaVersion" content="1265">
   <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 12.0px Consolas; background-color: #ffffff}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Consolas; background-color: #ffffff}
     span.s1 {color: #dd1144}
     span.s2 {color: #0086b3}
     span.Apple-tab-span {white-space:pre}
   </style>
 </head>
 <body>
-<p class="p1"><b>function</b> addBlankTargetForLinks () {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>$(<span class="s1">'a[href^="http"]'</span>).each(<b>function</b>(){</p>
-<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>$(<b>this</b>).attr(<span class="s1">'target'</span>, <span class="s1">'_blank'</span>);</p>
-<p class="p1"><span class="Apple-tab-span">	</span>});</p>
-<p class="p1">}</p>
-<p class="p1"> </p>
-<p class="p1">$(<span class="s2">document</span>).bind(<span class="s1">'DOMNodeInserted'</span>, <b>function</b>(event) {</p>
-<p class="p1"><span class="Apple-tab-span">	</span>addBlankTargetForLinks();</p>
-<p class="p1">});</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p2"><b>function</b> addBlankTargetForLinks () {</p>
+<p class="p2"><span class="Apple-converted-space">  </span>$(<span class="s1">'a[href^="http"]'</span>).each(<b>function</b>(){</p>
+<p class="p2"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>$(<b>this</b>).attr(<span class="s1">'target'</span>, <span class="s1">'_blank'</span>);</p>
+<p class="p2"><span class="Apple-tab-span">	</span>});</p>
+<p class="p2">}</p>
+<p class="p2"> </p>
+<p class="p2">$(<span class="s2">document</span>).bind(<span class="s1">'DOMNodeInserted'</span>, <b>function</b>(event) {</p>
+<p class="p2"><span class="Apple-tab-span">	</span>addBlankTargetForLinks();</p>
+<p class="p2">});</p>
+<p class="p2">&lt;/script&gt;</p>
 </body>
 </html>
 
