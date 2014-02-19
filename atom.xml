@@ -4,7 +4,7 @@
   <title><![CDATA[Koruk’s road of mobile development]]></title>
   <link href="http://koruk.github.io/atom.xml" rel="self"/>
   <link href="http://koruk.github.io/"/>
-  <updated>2014-02-19T21:28:06+08:00</updated>
+  <updated>2014-02-19T21:33:09+08:00</updated>
   <id>http://koruk.github.io/</id>
   <author>
     <name><![CDATA[Koruk W. Hwang]]></name>
@@ -14,30 +14,14 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Android 4.4 External Storage Permission Changes]]></title>
-    <link href="http://koruk.github.io/blog/2014/02/19/android-4-dot-4-external-storage-permission-changes/"/>
-    <updated>2014-02-19T18:46:27+08:00</updated>
-    <id>http://koruk.github.io/blog/2014/02/19/android-4-dot-4-external-storage-permission-changes</id>
-    <content type="html"><![CDATA[<p>Android 4.4 外存储设备权限的一些变化：</p>
-
-<blockquote><p>The WRITE_EXTERNAL_STORAGE permission must only grant write access to the primary external storage on a device. Apps must not be allowed to write to secondary external storage devices, except in their package-specific directories as allowed by synthesized permissions</p></blockquote>
-
-<p>To clarify, Google calls SD card storage as &ldquo;secondary external storage&rdquo; and what users usually think of as internal storage is technically called &ldquo;primary external storage”.</p>
-
-<p>小结：（for Android 4.4）自行购买SD 卡插入手机使用的（需要手机支持插入SD卡，多数手机不支持），插入的SD卡的访问权限——只能访问应用本身相关的文件夹，这个文件夹通过SDK中的有关接口取得。也就是说不能随便在外置SD卡中任意创建文件或文件夹。</p>
-
-<p>注：手机内嵌的存储设备（比如手机宣称有16G存储空间，那16G就是内嵌的存储设备，技术意义上被称为主外存储设备，虽然是内置的。）是可以的。</p>
-
-<p><a href="http://androidcommunity.com/android-4-4-discovered-to-restrict-apps-from-writing-anywhere-on-external-storage-20140217/">原文链接</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Avoid Using the Word Very]]></title>
     <link href="http://koruk.github.io/blog/2014/02/19/avoid-using-the-word-very/"/>
-    <updated>2014-02-19T00:00:00+08:00</updated>
+    <updated>2014-02-19T20:58:57+08:00</updated>
     <id>http://koruk.github.io/blog/2014/02/19/avoid-using-the-word-very</id>
     <content type="html"><![CDATA[<blockquote><p>&lsquo;Very&rsquo; 是英语中最没用处的单词了，实际上，它不止没用，而且极不靠谱，因为它在需要加强语气的时候却总是减弱了语气。 ~Florence King</p></blockquote>
+
+<!-- more -->
+
 
 <table>
 <thead>
@@ -234,6 +218,25 @@
 <hr />
 
 <p><a href="http://writerswrite.co.za/45-ways-to-avoid-using-the-word-very">原文链接（Original Article Link）</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android 4.4 External Storage Permission Changes]]></title>
+    <link href="http://koruk.github.io/blog/2014/02/19/android-4-dot-4-external-storage-permission-changes/"/>
+    <updated>2014-02-19T18:46:27+08:00</updated>
+    <id>http://koruk.github.io/blog/2014/02/19/android-4-dot-4-external-storage-permission-changes</id>
+    <content type="html"><![CDATA[<p>Android 4.4 外存储设备权限的一些变化：</p>
+
+<blockquote><p>The WRITE_EXTERNAL_STORAGE permission must only grant write access to the primary external storage on a device. Apps must not be allowed to write to secondary external storage devices, except in their package-specific directories as allowed by synthesized permissions</p></blockquote>
+
+<p>To clarify, Google calls SD card storage as &ldquo;secondary external storage&rdquo; and what users usually think of as internal storage is technically called &ldquo;primary external storage”.</p>
+
+<p>小结：（for Android 4.4）自行购买SD 卡插入手机使用的（需要手机支持插入SD卡，多数手机不支持），插入的SD卡的访问权限——只能访问应用本身相关的文件夹，这个文件夹通过SDK中的有关接口取得。也就是说不能随便在外置SD卡中任意创建文件或文件夹。</p>
+
+<p>注：手机内嵌的存储设备（比如手机宣称有16G存储空间，那16G就是内嵌的存储设备，技术意义上被称为主外存储设备，虽然是内置的。）是可以的。</p>
+
+<p><a href="http://androidcommunity.com/android-4-4-discovered-to-restrict-apps-from-writing-anywhere-on-external-storage-20140217/">原文链接</a></p>
 ]]></content>
   </entry>
   
