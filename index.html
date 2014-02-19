@@ -9,7 +9,7 @@
   <meta name="author" content="Koruk W. Hwang">
 
   
-  <meta name="description" content="Android 中应用启动的时候，首先会加载一个预览窗口（由Activity 的主题决定的）用于对用户操作的即时响应。一旦真正的内容加载完毕，预览窗口将淡出，内容窗口相应淡入。 比如如果你的Activity 没有ActionBar，那就在Activity 的主题里面禁用掉ActionBar， &hellip;">
+  <meta name="description" content="Android 4.4 外存储设备权限的一些变化： The WRITE_EXTERNAL_STORAGE permission must only grant write access to the primary external storage on a device. Apps must &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,6 +72,52 @@ addBlankTargetForLinks();
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/19/android-4-dot-4-external-storage-permission-changes/">Android 4.4 External Storage Permission Changes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-19T18:46:27+08:00" pubdate data-updated="true">Feb 19<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Android 4.4 外存储设备权限的一些变化：</p>
+
+<blockquote><p>The WRITE_EXTERNAL_STORAGE permission must only grant write access to the primary external storage on a device. Apps must not be allowed to write to secondary external storage devices, except in their package-specific directories as allowed by synthesized permissions</p></blockquote>
+
+<p>To clarify, Google calls SD card storage as &ldquo;secondary external storage&rdquo; and what users usually think of as internal storage is technically called &ldquo;primary external storage”.</p>
+
+<p>小结：（for Android 4.4）自行购买SD 卡插入手机使用的（需要手机支持插入SD卡，多数手机不支持），插入的SD卡的访问权限——只能访问应用本身相关的文件夹，这个文件夹通过SDK中的有关接口取得。也就是说不能随便在外置SD卡中任意创建文件或文件夹。</p>
+
+<p>注：手机内嵌的存储设备（比如手机宣称有16G存储空间，那16G就是内嵌的存储设备，技术意义上被称为主外存储设备，虽然是内置的。）是可以的。</p>
+
+<p><a href="http://androidcommunity.com/android-4-4-discovered-to-restrict-apps-from-writing-anywhere-on-external-storage-20140217/">原文链接</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -532,6 +578,10 @@ addBlankTargetForLinks();
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/19/android-4-dot-4-external-storage-permission-changes/">Android 4.4 External Storage Permission Changes</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/15/how-to-make-app-launch-experience-smoother/">译：如何让Android 应用启动的体验更顺畅</a>
       </li>
     
@@ -545,10 +595,6 @@ addBlankTargetForLinks();
     
       <li class="post">
         <a href="/blog/2013/05/07/callback-in-+android/">说说Android中的回调（1）</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/05/06/viewpager-optimization/">关于ViewPager性能的讨论</a>
       </li>
     
   </ul>
